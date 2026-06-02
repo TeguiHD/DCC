@@ -1,19 +1,22 @@
 # DDC Publicidad Laravel Deployment
 
-## Produccion en Hostinger/cPanel
+## Produccion en BlueHosting/cPanel
 
 Publicar preferentemente apuntando el dominio a la carpeta `public/` de Laravel. Si cPanel no permite cambiar el document root, subir la app completa y dejar el `.htaccess` de la raiz redirigiendo todo a `public/`.
+
+El hosting actual no tiene SSH ni terminal, por lo que el flujo estable es compilar localmente, preparar el paquete con `vendor/` incluido y subirlo por FTPS.
 
 ## Build local
 
 ```bash
-composer install --no-dev --optimize-autoloader
 npm install
 npm run build
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+composer install --no-dev --optimize-autoloader
 ```
+
+No generar `php artisan config:cache` ni `php artisan view:cache` localmente para este cPanel: esos archivos guardan rutas absolutas de la maquina local y pueden romper sesiones/cache en produccion. Mantener ausente `bootstrap/cache/config.php` salvo que se regenere dentro del servidor.
+
+Tampoco usar `route:cache` mientras existan rutas con closures para redirecciones heredadas.
 
 ## Seguridad
 
