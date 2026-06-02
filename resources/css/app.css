@@ -1,0 +1,162 @@
+@import 'tailwindcss';
+
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'DM Serif Display', ui-serif, Georgia, serif;
+    --color-ddc-cyan: #009ee0;
+    --color-ddc-magenta: #e4007b;
+    --color-ddc-yellow: #ffc20e;
+    --color-ddc-black: #1d1d1b;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    a,
+    button,
+    input,
+    select,
+    textarea {
+        letter-spacing: 0;
+    }
+
+    select,
+    input,
+    textarea {
+        color-scheme: dark;
+    }
+}
+
+@layer components {
+    .font700 {
+        font-weight: 700;
+    }
+
+    .font800 {
+        font-weight: 800;
+    }
+
+    .nav-link {
+        @apply rounded-md px-3 py-2 transition hover:bg-white/[0.08] hover:text-cyan-100;
+    }
+
+    .cart-trigger {
+        @apply inline-flex items-center gap-2 rounded-md bg-white px-3 py-2 text-sm font-extrabold text-neutral-950 transition hover:bg-yellow-300;
+    }
+
+    .cart-trigger span {
+        @apply grid min-h-5 min-w-5 place-items-center rounded-md bg-pink-600 px-1 text-xs text-white;
+    }
+
+    .icon-btn,
+    .icon-text-btn {
+        @apply rounded-md border border-white/14 px-3 py-2 text-sm font-extrabold text-white/82 transition hover:border-cyan-300 hover:text-cyan-100;
+    }
+
+    .primary-btn {
+        @apply inline-flex items-center rounded-md bg-cyan-300 px-5 py-3 font-extrabold text-neutral-950 transition hover:bg-yellow-300;
+    }
+
+    .secondary-btn {
+        @apply inline-flex items-center rounded-md border border-white/14 px-5 py-3 font-extrabold text-white/84 transition hover:border-pink-400 hover:text-white;
+    }
+
+    .eyebrow {
+        @apply text-sm font-extrabold uppercase text-yellow-200;
+    }
+
+    .metric-pill {
+        @apply rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-center;
+    }
+
+    .section-band {
+        @apply mx-auto max-w-7xl px-4 py-10 md:px-6 lg:py-14;
+    }
+
+    .section-head {
+        @apply mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between;
+    }
+
+    .section-head h2 {
+        @apply mt-2 text-3xl font-extrabold leading-tight text-white md:text-5xl;
+    }
+
+    .section-head a {
+        @apply text-sm font-extrabold text-cyan-200 hover:text-yellow-200;
+    }
+
+    .page-shell {
+        @apply mx-auto max-w-7xl px-4 py-10 md:px-6 lg:py-14;
+    }
+
+    .page-shell h1 {
+        @apply mt-3 max-w-4xl text-5xl font-extrabold leading-none text-white md:text-7xl;
+    }
+
+    .page-shell p:not(.eyebrow) {
+        @apply mt-5 max-w-3xl text-lg leading-8 text-white/70;
+    }
+
+    .products-grid {
+        @apply grid gap-5 sm:grid-cols-2 lg:grid-cols-3;
+    }
+
+    .product-card {
+        @apply rounded-lg border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-300 hover:bg-white/[0.07];
+    }
+
+    .badge {
+        @apply rounded-md bg-pink-500 px-2 py-1 text-xs font-extrabold text-white;
+    }
+
+    .search-input,
+    .field-label input,
+    .field-label select,
+    .field-label textarea {
+        @apply w-full rounded-md border border-white/12 bg-neutral-900 px-3 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300;
+    }
+
+    .field-label {
+        @apply grid gap-2 text-sm font-extrabold text-white/74;
+    }
+
+    .filter-pill {
+        @apply rounded-md border border-white/12 px-3 py-2 text-sm font-extrabold text-white/72 transition hover:border-cyan-300 hover:text-cyan-100;
+    }
+
+    .filter-pill.is-active {
+        @apply border-cyan-300 bg-cyan-300 text-neutral-950;
+    }
+
+    .hero-slide {
+        @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    }
+
+    .hero-slide.is-active {
+        @apply opacity-100;
+    }
+
+    .cart-open [data-cart-drawer] {
+        transform: translateX(0);
+    }
+
+    .cart-line {
+        @apply rounded-lg border border-white/10 bg-white/[0.04] p-4;
+    }
+}
